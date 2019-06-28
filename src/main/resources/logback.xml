@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="3000 seconds" debug="false">	
+	<property resource="application.properties"/>
+	<contextName>bookgrabber</contextName>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+			<charset class="java.nio.charset.Charset">${application.charset}</charset>
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>${log.baseroot}/settlemanage.log</file>
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+			<charset class="java.nio.charset.Charset">${application.charset}</charset>
+		</encoder>
+	</appender>
+
+	<!-- 按照每天生成日志文件 -->
+	<appender name="ROLLINGFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--日志文件输出的文件名 -->
+			<FileNamePattern>${log.baseroot}/${log.filename.pattern}</FileNamePattern>
+			<MaxHistory>${log.file.max}</MaxHistory>
+		</rollingPolicy>
+		<encoder>
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+			<pattern>${log.pattern}</pattern>
+			<charset class="java.nio.charset.Charset">${application.charset}</charset>
+		</encoder>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="ROLLINGFILE" />
+	</root> 
+
+</configuration>

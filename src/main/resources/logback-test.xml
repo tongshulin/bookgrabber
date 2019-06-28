@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="3000 seconds" debug="false">
+	<contextName>bookgrabber</contextName>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+			<charset class="java.nio.charset.Charset">UTF-8</charset>
+		</encoder>
+	</appender>
+
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</root> 
+
+</configuration>
