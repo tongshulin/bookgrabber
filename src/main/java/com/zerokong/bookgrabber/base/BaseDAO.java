@@ -20,7 +20,7 @@ public class BaseDAO<T> {
     public SessionFactory sessionFactory;
 
     @Resource(name = "jdbcTemplate")
-    protected JdbcTemplate jdpcTemplate;
+    protected JdbcTemplate jdbcTemplate;
 
     public Session getSession() {
         Session session = null;
